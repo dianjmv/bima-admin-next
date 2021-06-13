@@ -170,7 +170,7 @@ function FormRegister({formik}: any) {
             <div className={'col-span-2'}>
                 <Button variant="contained" color="primary" type={"submit"}
                         disabled={!!(formik.errors || formik.errors)}>
-                    {authState.loginUser ? 'Cargando' : 'Registrarse'}
+                    {authState.loading ? 'Cargando' : 'Registrarse'}
                 </Button>
             </div>
         </form>
