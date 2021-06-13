@@ -10,6 +10,7 @@ type Props = {
   props?: any;
   children?: React.ReactNode;
   type: "button" | "submit" | "reset";
+  disabled: boolean
 };
 export default function ButtonBima(props: Props) {
   const className = classNames(props.className, {
@@ -17,7 +18,7 @@ export default function ButtonBima(props: Props) {
       props.typeButton === "primary",
   });
   return (
-    <button type={props.type} className={className}>
+    <button type={props.type} className={className} disabled={props.disabled}>
       {props.children}
     </button>
   );

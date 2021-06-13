@@ -5,7 +5,7 @@ import React from "react";
 import FormRegister from "@/components/molecules/FormRegister/FormRegister";
 
 function Register(){
-    const loginUser = useLogin();
+
     const initialValues = () => ({
         username: '',
         password: '',

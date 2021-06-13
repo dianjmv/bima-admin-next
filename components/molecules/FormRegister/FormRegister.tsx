@@ -16,7 +16,6 @@ function FormRegister({formik}: any) {
                 {name: 'Bogotá', value: 'BGTA'},
                 {name: 'Cali', value: 'CAL'},
                 {name: 'Medellin', value: 'MEDL'},
-
             ]
             setCities(cities)
             setCitySelected(cities[0].value)
@@ -27,7 +26,6 @@ function FormRegister({formik}: any) {
                 {name: 'Quito', value: 'UIO'},
                 {name: 'Guayaquil', value: 'GYE'},
                 {name: 'Cuenca', value: 'CUE'},
-
             ]
             setCities(cities)
             setCitySelected(cities[0].value)
@@ -56,42 +54,42 @@ function FormRegister({formik}: any) {
                        onChange={formik.handleChange}
                        onBlur={formik.handleBlur}
                        value={formik.values.name}
-                       helperText={!!(formik.touched.name && formik.errors.name) ? formik.errors.name : null}
+                       helperText={formik.touched.name && formik.errors.name ? formik.errors.name : null}
             />
             <TextField id="last_name" label="Apellido" variant="outlined"
                        error={!!(formik.touched.last_name && formik.errors.last_name)}
                        onChange={formik.handleChange}
                        onBlur={formik.handleBlur}
                        value={formik.values.last_name}
-                       helperText={!!(formik.touched.last_name && formik.errors.last_name) ? formik.errors.last_name : null}
+                       helperText={formik.touched.last_name && formik.errors.last_name ? formik.errors.last_name : null}
             />
             <TextField id="email" label="Email" variant="outlined"
                        error={!!(formik.touched.email && formik.errors.email)}
                        onChange={formik.handleChange}
                        onBlur={formik.handleBlur}
                        value={formik.values.email}
-                       helperText={!!(formik.touched.email && formik.errors.email) ? formik.errors.email : null}
+                       helperText={formik.touched.email && formik.errors.email ? formik.errors.email : null}
             />
             <TextField id="username" label="Username" variant="outlined"
                        error={!!(formik.touched.username && formik.errors.username)}
                        onChange={formik.handleChange}
                        onBlur={formik.handleBlur}
                        value={formik.values.username}
-                       helperText={!!(formik.touched.username && formik.errors.username) ? formik.errors.username : null}
+                       helperText={formik.touched.username && formik.errors.username ? formik.errors.username : null}
             />
             <TextField id="password" label="Contraseña" type={'password'} variant="outlined"
                        error={!!(formik.touched.password && formik.errors.password)}
                        onChange={formik.handleChange}
                        onBlur={formik.handleBlur}
                        value={formik.values.password}
-                       helperText={!!(formik.touched.password && formik.errors.password) ? formik.errors.password : null}
+                       helperText={formik.touched.password && formik.errors.password ? formik.errors.password : null}
             />
             <TextField id="password_confirmation" label="Repite la Contraseña" type={'password'} variant="outlined"
                        error={!!(formik.touched.password_confirmation && formik.errors.password_confirmation)}
                        onChange={formik.handleChange}
                        onBlur={formik.handleBlur}
                        value={formik.values.password_confirmation}
-                       helperText={!!(formik.touched.password_confirmation && formik.errors.password_confirmation) ? formik.errors.password_confirmation : null}
+                       helperText={formik.touched.password_confirmation && formik.errors.password_confirmation ? formik.errors.password_confirmation : null}
             />
 
             <TextField id="country" label="País" select variant="outlined"
@@ -99,7 +97,7 @@ function FormRegister({formik}: any) {
                        onChange={formik.handleChange}
                        onBlur={formik.handleBlur}
                        value={formik.values.country}
-                       helperText={!!(formik.touched.country && formik.errors.country) ? formik.errors.country : null}
+                       helperText={formik.touched.country && formik.errors.country ? formik.errors.country : null}
             >
                 <MenuItem value={'EC'}>Ecuador</MenuItem>
                 <MenuItem value={'CO'}>Colombia</MenuItem>
@@ -111,7 +109,7 @@ function FormRegister({formik}: any) {
                        onChange={handleCityChange}
                        onBlur={formik.handleBlur}
                        value={formik.values.city}
-                       helperText={!!(formik.touched.city && formik.errors.city) ? formik.errors.city : null}
+                       helperText={formik.touched.city && formik.errors.city ? formik.errors.city : null}
             >
                 {
                     cities.length > 0 ?
