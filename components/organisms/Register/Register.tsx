@@ -1,8 +1,8 @@
-import {useLogin} from "@/store/auth/authHooks";
+
 import * as Yup from "yup";
 import {Formik} from "formik";
 import React from "react";
-import FormRegister from "@/components/molecules/FormRegister/FormRegister";
+import FormRegister from "@/components/molecules/FormRegister/";
 
 function Register(){
 
