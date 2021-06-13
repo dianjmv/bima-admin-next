@@ -8,9 +8,9 @@ function FormRegister({formik}: any) {
     const [countrySelected, setCountrySelected] = useState(null);
     const [cities, setCities] = useState([])
     const [citySelected, setCitySelected] = useState(null)
-    console.log(formik)
     function handleCountryChange(data) {
         setCountrySelected(data.target.value)
+        formik.values.country = data.target.value;
         if (data.target.value === 'CO') {
             const cities = [
                 {name: 'Bogotá', value: 'BGTA'},
@@ -32,9 +32,9 @@ function FormRegister({formik}: any) {
         }
         if (data.target.value === 'PE') {
             const cities = [
-                {name: 'Bogotá', value: 'BGTA'},
-                {name: 'Cali', value: 'BGTA'},
-                {name: 'Medellin', value: 'BGTA'},
+                {name: 'Bogotá', value: 'PE1'},
+                {name: 'Cali', value: 'PE2'},
+                {name: 'Medellin', value: 'PE3'},
             ]
             setCities(cities)
             setCitySelected(cities[0].value)
@@ -42,10 +42,10 @@ function FormRegister({formik}: any) {
     }
 
     function handleCityChange(data) {
-        console.log('Ciudad seleccionada' ,data.target.value)
         setCitySelected(data.target.value)
-        formik.values.city = citySelected
+        formik.values.city = data.target.value
     }
+    console.log(!!(formik.isValid || formik.errors))
 
     return (
         <form className={'grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-3'} onSubmit={formik.handleSubmit}>
@@ -92,33 +92,31 @@ function FormRegister({formik}: any) {
                        helperText={formik.touched.password_confirmation && formik.errors.password_confirmation ? formik.errors.password_confirmation : null}
             />
 
-            <TextField id="country" label="País" select variant="outlined"
-                       error={!!(formik.touched.country && formik.errors.country)}
-                       onChange={formik.handleChange}
-                       onBlur={formik.handleBlur}
-                       value={formik.values.country}
-                       helperText={formik.touched.country && formik.errors.country ? formik.errors.country : null}
-            >
-                <MenuItem value={'EC'}>Ecuador</MenuItem>
-                <MenuItem value={'CO'}>Colombia</MenuItem>
-                <MenuItem value={'PE'}>Perú</MenuItem>
+            <select id="country"
+                    onChange={handleCountryChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.country}
 
-            </TextField>
-            <TextField id="city" label="Ciudad" select variant="outlined"
-                       error={!!(formik.touched.city && formik.errors.city)}
-                       onChange={handleCityChange}
-                       onBlur={formik.handleBlur}
-                       value={formik.values.city}
-                       helperText={formik.touched.city && formik.errors.city ? formik.errors.city : null}
+            >
+                <option value={'EC'}>Ecuador</option>
+                <option value={'CO'}>Colombia</option>
+                <option value={'PE'}>Perú</option>
+            </select>
+            <select id="city"
+                    onChange={handleCityChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.city}
             >
                 {
                     cities.length > 0 ?
                         cities.map((city, index) =>
-                            <MenuItem key={index} value={city.value}>{city.name}</MenuItem>
+                            <option key={index} value={city.value}>{city.name}</option>
                         ) :
-                        <MenuItem value={""}>---</MenuItem>
+                        <option value={""}>---</option>
                 }
-            </TextField>
+            </select>
+
+
 
 
             {/*<FormControl variant="outlined" >*/}
@@ -169,7 +167,7 @@ function FormRegister({formik}: any) {
             {/*</FormControl>*/}
             <div className={'col-span-2'}>
                 <Button variant="contained" color="primary" type={"submit"}
-                        disabled={!!(formik.errors || formik.errors)}>
+                        disabled={!formik.isValid}>
                     {authState.loading ? 'Cargando' : 'Registrarse'}
                 </Button>
             </div>

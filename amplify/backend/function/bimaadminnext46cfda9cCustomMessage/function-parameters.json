@@ -1,0 +1,26 @@
+{
+  "trigger": true,
+  "modules": [
+    "verification-link"
+  ],
+  "parentResource": "bimaadminnext46cfda9c",
+  "functionName": "bimaadminnext46cfda9cCustomMessage",
+  "resourceName": "bimaadminnext46cfda9cCustomMessage",
+  "parentStack": "auth",
+  "triggerEnvs": [
+    {
+      "key": "RESOURCENAME",
+      "value": "resourceName"
+    }
+  ],
+  "triggerDir": "C:\\Users\\danny\\AppData\\Roaming\\nvm\\v15.1.0\\node_modules\\@aws-amplify\\cli\\node_modules\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\CustomMessage",
+  "triggerTemplate": "CustomMessage.json.ejs",
+  "triggerEventPath": "CustomMessage.event.json",
+  "roleName": "bimaadminnext46cfda9cCustomMessage",
+  "skipEdit": true,
+  "REDIRECTURL": "http://localhost:3000/",
+  "EMAILSUBJECT": "Account Confirmation",
+  "EMAILMESSAGE": "Please click in the next link to confirm your account",
+  "RESOURCENAME": "resourceName",
+  "enableCors": false
+}

@@ -3,6 +3,14 @@ import * as Yup from "yup";
 import {Formik} from "formik";
 import React from "react";
 import FormRegister from "@/components/molecules/FormRegister/";
+import {Auth} from "aws-amplify";
+import {ISignUpResult} from "amazon-cognito-identity-js";
+
+
+Auth.configure({
+    userPoolId: process.env.COGNITO_POOL_ID,
+    userPoolWebClientId: process.env.COGNITO_CLIENT_ID
+})
 
 function Register(){
 
@@ -27,7 +35,22 @@ function Register(){
         last_name: Yup.string().required('El apellido es requerido'),
     });
     const register = (values: any, { setSubmitting, setErrors, setStatus, resetForm }: any) => {
-        console.log(values)
+
+        Auth.signUp({
+            username:values.email,
+            password: values.password,
+            attributes:{
+                email:values.email
+            }
+        }).then((result: ISignUpResult)=>{
+            console.log(result)
+            if (!result.userConfirmed){
+                return Error
+            }else {
+                return result
+            }
+
+        }).catch((error)=>console.log(error))
     };
     return(
         <div className={'max-w-xl bg-white px-10 py-6 rounded-md my-auto'}>

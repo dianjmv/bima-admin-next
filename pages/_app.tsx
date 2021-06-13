@@ -5,8 +5,14 @@ import {load, save, wrapper} from '@/store/store';
 import {useApplyClientState} from "@/store/client";
 import Layout from "../layouts/Layout";
 import {CookiesProvider} from "react-cookie"
+import {Provider} from "next-auth/client"
+import Amplify from 'aws-amplify'
+import config from '@/src/aws-exports'
 
-
+Amplify.configure({
+    ...config,
+    ssr: true
+})
 function BimaAdmin({Component, pageProps}) {
     const store = useStore();
     const applyClientState = useApplyClientState();
@@ -25,12 +31,14 @@ function BimaAdmin({Component, pageProps}) {
 
 
     return (
-        <CookiesProvider>
-            <Layout headerLayout={'default'}>
-                <Component {...pageProps} />
-            </Layout>
-        </CookiesProvider>)
-
+        <Provider session={pageProps.session}>
+            <CookiesProvider>
+                <Layout headerLayout={'default'}>
+                    <Component {...pageProps} />
+                </Layout>
+            </CookiesProvider>
+        </Provider>
+    )
 }
 
 export default wrapper.withRedux(BimaAdmin);

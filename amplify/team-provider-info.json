@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bimaadminnext-dev-173453-authRole",
+      "UnauthRoleArn": "arn:aws:iam::357883809526:role/amplify-bimaadminnext-dev-173453-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::357883809526:role/amplify-bimaadminnext-dev-173453-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-bimaadminnext-dev-173453-deployment",
+      "UnauthRoleName": "amplify-bimaadminnext-dev-173453-unauthRole",
+      "StackName": "amplify-bimaadminnext-dev-173453",
+      "StackId": "arn:aws:cloudformation:us-east-2:357883809526:stack/amplify-bimaadminnext-dev-173453/959ca090-cc97-11eb-bce4-06b5bf0e13ac",
+      "AmplifyAppId": "d3h1yp8vs5a6gd"
+    },
+    "categories": {
+      "function": {
+        "bimaadminnext46cfda9cCustomMessage": {
+          "REDIRECTURL": "http://localhost:3000/",
+          "EMAILSUBJECT": "Account Confirmation",
+          "EMAILMESSAGE": "Please click in the next link to confirm your account",
+          "deploymentBucketName": "amplify-bimaadminnext-dev-173453-deployment",
+          "s3Key": "amplify-builds/bimaadminnext46cfda9cCustomMessage-746a6b676f764c385335-build.zip"
+        }
+      },
+      "auth": {
+        "bimaadminnext46cfda9c": {}
+      }
+    }
+  }
+}
